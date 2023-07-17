@@ -3,9 +3,9 @@ import { Button, Container, Form, Row } from 'react-bootstrap'
 import { useLocation, useNavigate } from 'react-router'
 
 
-const getdata = () =>{
+const getdata = () => {
     let data = JSON.parse(localStorage.getItem("st_data"));
-    if(data != null){
+    if (data != null) {
         return data;
     }
     return [];
@@ -22,21 +22,21 @@ function Edit_stu() {
 
     const [inputval, setInputval] = useState(location.state.single);
 
-    const handlechange = (e) =>{
+    const handlechange = (e) => {
         let name = e.target.name;
         let value = e.target.value;
 
-        setInputval({...inputval, [name]: value});
+        setInputval({ ...inputval, [name]: value });
     }
 
-    const handlesubmit = (e) =>{
+    const handlesubmit = (e) => {
         e.preventDefault();
 
 
         let ne_data = getdata();
 
         ne_data[location.state.index] = inputval;
-        localStorage.setItem("st_data",JSON.stringify(ne_data));
+        localStorage.setItem("st_data", JSON.stringify(ne_data));
         navigate("/view_student");
 
         setInputval({
