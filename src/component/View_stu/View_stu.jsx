@@ -13,33 +13,11 @@ const getdata = () => {
   return [];
 }
 
-const filterdata = () => {
-  const co_data = getdata();
-  const course_d = co_data.map((cou) => {
-    return cou.course;
-  })
-  // console.log("course",course_d);
-
-  const uniq_course = course_d.filter((uniq, index) => {
-    return course_d.indexOf(uniq) == index;
-  })
-  // console.log("uniq_course",uniq_course);
-  return uniq_course;
-}
-
 function View_stu() {
 
   const navigate = useNavigate();
 
   const [student_de, setStudent_de] = useState(getdata());
-  const [st_filterdata, setSt_filterdata] = useState(filterdata());
-  const [search_stu, setSearch_stu] = useState({
-    search: ''
-  });
-  const [open_btn, setOpen_btn] = useState({
-    id: '',
-    isToggle: false
-  });
 
   const handleedit = (id, index) => {
     let u_data = getdata();
@@ -54,7 +32,7 @@ function View_stu() {
   }
 
   const handledelete = (id) => {
-    console.log(id, "de_id");
+    // console.log(id, "de_id");
     let de_data = getdata();
 
     let delete_re = de_data.filter((de) => {
@@ -64,86 +42,6 @@ function View_stu() {
     localStorage.setItem("st_data", JSON.stringify(delete_re));
     setStudent_de(delete_re);
 
-  }
-
-  const handlefilter = (e) => {
-    // console.log(e.target.value);
-    let value = e.target.value;
-
-    let fi_data = getdata();
-
-    if (value != -1) {
-      let f_data = fi_data.filter((fda) => {
-        // console.log(fdata.course,"fdata");
-        return fda.course === value;
-      })
-      // console.log(f_data,"f_data");
-      setStudent_de(f_data);
-    }
-    else {
-      setStudent_de(getdata());
-    }
-  }
-
-
-  const handlesearch = (e) => {
-    // console.log(e.target.value);
-    let name = e.target.name;
-    let val = e.target.value;
-
-    setSearch_stu({ [name]: val });
-
-    let se_data = getdata();
-
-    let search_d = se_data.filter((s_re) => {
-      return s_re.fname.toLowerCase().indexOf(val.toLowerCase()) > -1;
-    })
-    // console.log(search_d,"search_d");
-    setStudent_de(search_d);
-  }
-
-  const handlesort = (type) => {
-    let so_data = getdata();
-    let sort_d;
-
-    if (type == "Asc") {
-      sort_d = so_data.sort((stuA, stuB) => {
-        return stuA["fname"].localeCompare(stuB["fname"]);
-      })
-    }
-    else if (type == "Dec") {
-      sort_d = so_data.sort((stuA, stuB) => {
-        return stuB["fname"].localeCompare(stuA["fname"]);
-      })
-    }
-    else if (type == "AscId") {
-      sort_d = so_data.sort((stuA, stuB) => {
-        return stuA["id"] - stuB["id"];
-      })
-    }
-    else {
-      sort_d = so_data.sort((stuA, stuB) => {
-        return stuB["id"] - stuA["id"];
-      })
-    }
-    setStudent_de(sort_d);
-  }
-
-
-  const handlebopen = (id) => {
-    // console.log("click",id);
-    if (open_btn.id == id) {
-      setOpen_btn({
-        id: id,
-        isToggle: false
-      })
-    }
-    else {
-      setOpen_btn({
-        id: id,
-        isToggle: true
-      })
-    }
   }
 
   const handleview = (stu) => {
@@ -156,34 +54,6 @@ function View_stu() {
     <>
       <Container>
         <Row>
-          <div className="d-flex mt-3 mb-3" style={{ justifyContent: "space-between" }}>
-            <div className='mb-3 col-4'>
-              <label style={{ marginRight: 10 }}>Course :</label>
-              <select onChange={(e) => { handlefilter(e) }}>
-                <option value={"-1"}>All</option>
-                {
-                  st_filterdata.map((fi_cou) => {
-                    return (
-                      <option value={fi_cou}>{fi_cou}</option>
-                    )
-                  })
-                }
-              </select>
-            </div>
-            <div className='col-4'>
-              <Button className='btn-info me-2' onClick={() => handlesort("Asc")}>A-Z</Button>
-              <Button className='btn-info me-2' onClick={() => handlesort("Dec")}>Z-A</Button>
-              <Button className='btn-info me-2' onClick={() => handlesort("AscId")}>1-N</Button>
-              <Button className='btn-info' onClick={() => handlesort("DecId")}>N-1</Button>
-            </div>
-            <div className='col-4'>
-              <Form>
-                <Form.Group>
-                  <Form.Control type="text" placeholder="Search" name='search' value={search_stu.search} onChange={handlesearch} />
-                </Form.Group>
-              </Form>
-            </div>
-          </div>
           <Table responsive="sm">
             {
               student_de.length != 0 ?
@@ -201,7 +71,7 @@ function View_stu() {
                       <th>Action</th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody style={{verticalAlign: "middle"}}>
                     {
                       student_de.map((stu, index) => {
                         return (
@@ -231,18 +101,9 @@ function View_stu() {
                               {stu.gender}
                             </td>
                             <td>
-                              <div className='drop'>
-                                <button className='btn' onClick={() => { handlebopen(stu.id) }}><FaEllipsisV /></button>
-                                {
-                                  open_btn.id === stu.id && open_btn.isToggle ?
-                                    <div className="drop_menu" id='drop_menu'>
-                                      <button className='btn text-primary' onClick={() => { handleedit(stu.id, index) }}><FaPencilAlt className='me-2' />Edit</button>
-                                      <button className='btn text-danger' onClick={() => { handledelete(stu.id) }}><FaTrashAlt className='me-2' />Delete</button>
-                                      <button className='btn' onClick={() => { handleview(stu) }}><FaEye className='me-2' />View</button>
-                                    </div>
-                                    : ""
-                                }
-                              </div>
+                              <button className='btn text-primary' onClick={() => { handleedit(stu.id, index) }}><FaPencilAlt className='me-2' />Edit</button>
+                              <button className='btn text-danger' onClick={() => { handledelete(stu.id) }}><FaTrashAlt className='me-2' />Delete</button>
+                              <button className='btn' onClick={() => { handleview(stu) }}><FaEye className='me-2' />View</button>
                             </td>
                           </tr>
                         )
