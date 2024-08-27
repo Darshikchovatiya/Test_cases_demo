@@ -1,16 +1,5 @@
 import App from "./App";
 import { fireEvent, render, screen } from "@testing-library/react";
-import cleandb from "./service";
-
-
-// beforeAll(()=>{
-//     console.log("+++++ beforeAll hook call *****")
-// })
-
-beforeEach(()=>{
-    // console.log("+++++ beforeEach hook call *****")
-    cleandb();
-})
 
 test('Always true test', () => {
     expect(true).toBe.true;
@@ -104,35 +93,8 @@ test('on change event testing', ()=>{
 })
 
 test('click event testing', () => {
-    console.log("testing");
     render(<App />);
     const checkBtn = screen.getByRole('button');
     fireEvent.click(checkBtn);
     expect(screen.getByText("hello")).toBeInTheDocument();
 })
-
-test('click event testing 1', () => {
-    console.log("testing 1");
-    render(<App />);
-    const checkBtn = screen.getByRole('button');
-    fireEvent.click(checkBtn);
-    expect(screen.getByText("hello")).toBeInTheDocument();
-})
-
-test('click event testing 2', () => {
-    console.log("testing 2");
-    render(<App />);
-    const checkBtn = screen.getByRole('button');
-    fireEvent.click(checkBtn);
-    expect(screen.getByText("hello")).toBeInTheDocument();
-})
-
-
-
-// afterAll(()=>{
-//     console.log('_______ afterAll _________')
-// })
-
-// afterEach(()=>{
-//     console.log('_______ afterEach _________')
-// })

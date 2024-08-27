@@ -24,7 +24,7 @@ function App() {
         <input type="text" value={data} onChange={(e) => {setData(e.target.value + "test")}} />
 
         <h1>Test Click event with button </h1>
-        <button onClick={()=> {setData1('updated data')}}>Updated data</button>
+        <button onClick={()=> {setData1('hello')}}>Updated data</button>
         <h1>{data1}</h1>
 
             {/* <Header />
