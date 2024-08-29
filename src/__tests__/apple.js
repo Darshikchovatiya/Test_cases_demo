@@ -85,16 +85,16 @@ test('Always true test', () => {
 
 
 
-test('on change event testing', ()=>{
-    render(<App />);
-    const checkInput = screen.getByRole('textbox');
-    fireEvent.change(checkInput,{target:{value:'dev'}});
-    expect(checkInput.value).toBe('devtest');
-})
+// test('on change event testing', ()=>{
+//     render(<App />);
+//     const checkInput = screen.getByRole('textbox');
+//     fireEvent.change(checkInput,{target:{value:'dev'}});
+//     expect(checkInput.value).toBe('devtest');
+// })
 
-test('click event testing', () => {
-    render(<App />);
-    const checkBtn = screen.getByRole('button');
-    fireEvent.click(checkBtn);
-    expect(screen.getByText("hello")).toBeInTheDocument();
-})
+// test('click event testing', () => {
+//     render(<App />);
+//     const checkBtn = screen.getByRole('button');
+//     fireEvent.click(checkBtn);
+//     expect(screen.getByText("hello")).toBeInTheDocument();
+// })

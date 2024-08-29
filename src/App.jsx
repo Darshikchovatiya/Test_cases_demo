@@ -6,6 +6,7 @@ import { Route, Routes } from 'react-router'
 import Home from './component/Home/Home'
 import Edit_stu from './component/Edit_stu/Edit_stu'
 import View from './component/View/View'
+import Users from './Users'
 
 function App() {
 
@@ -20,12 +21,17 @@ function App() {
         <img src="https://images.pexels.com/photos/6296908/pexels-photo-6296908.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" alt="" title='sky and mountain' />
         <input type="text" placeholder='Enter name' name='name' id='nameId' value='darshik' /> */}
 
-        <h1>Test on change event</h1>
-        <input type="text" value={data} onChange={(e) => {setData(e.target.value + "test")}} />
+        {/* <h1>Test on change event</h1>
+        <input type="text" value={data} onChange={(e) => {setData(e.target.value + "test")}} /> */}
 
-        <h1>Test Click event with button </h1>
+        {/* <h1>Test Click event with button </h1>
         <button onClick={()=> {setData1('hello')}}>Updated data</button>
-        <h1>{data1}</h1>
+        <h1>{data1}</h1> */}
+
+        {/* <h1>Jest testing</h1> */}
+
+        <h1>Class Component method testing</h1>
+        <Users />
 
             {/* <Header />
             <Routes>

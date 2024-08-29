@@ -1,20 +1,23 @@
 import App from "./App";
 import { fireEvent, render, screen } from "@testing-library/react";
-import cleandb from "./service";
+import renderer from 'react-test-renderer';
+import Users from "./Users";
+// import cleandb from "./service";
+
 
 
 // beforeAll(()=>{
 //     console.log("+++++ beforeAll hook call *****")
 // })
 
-beforeEach(()=>{
-    // console.log("+++++ beforeEach hook call *****")
-    cleandb();
-})
+// beforeEach(()=>{
+//     // console.log("+++++ beforeEach hook call *****")
+//     cleandb();
+// })
 
-test('Always true test', () => {
-    expect(true).toBe.true;
-})
+// test('Always true test', () => {
+//     expect(true).toBe.true;
+// })
 
 // test.skip('Heading should be Vite React', () => {
 //     render(<App />);
@@ -96,36 +99,36 @@ test('Always true test', () => {
 
 
 
-test('on change event testing', ()=>{
-    render(<App />);
-    const checkInput = screen.getByRole('textbox');
-    fireEvent.change(checkInput,{target:{value:'dev'}});
-    expect(checkInput.value).toBe('devtest');
-})
+// test('on change event testing', ()=>{
+//     render(<App />);
+//     const checkInput = screen.getByRole('textbox');
+//     fireEvent.change(checkInput,{target:{value:'dev'}});
+//     expect(checkInput.value).toBe('devtest');
+// })
 
-test('click event testing', () => {
-    console.log("testing");
-    render(<App />);
-    const checkBtn = screen.getByRole('button');
-    fireEvent.click(checkBtn);
-    expect(screen.getByText("hello")).toBeInTheDocument();
-})
+// test('click event testing', () => {
+//     console.log("testing");
+//     render(<App />);
+//     const checkBtn = screen.getByRole('button');
+//     fireEvent.click(checkBtn);
+//     expect(screen.getByText("hello")).toBeInTheDocument();
+// })
 
-test('click event testing 1', () => {
-    console.log("testing 1");
-    render(<App />);
-    const checkBtn = screen.getByRole('button');
-    fireEvent.click(checkBtn);
-    expect(screen.getByText("hello")).toBeInTheDocument();
-})
+// test('click event testing 1', () => {
+//     console.log("testing 1");
+//     render(<App />);
+//     const checkBtn = screen.getByRole('button');
+//     fireEvent.click(checkBtn);
+//     expect(screen.getByText("hello")).toBeInTheDocument();
+// })
 
-test('click event testing 2', () => {
-    console.log("testing 2");
-    render(<App />);
-    const checkBtn = screen.getByRole('button');
-    fireEvent.click(checkBtn);
-    expect(screen.getByText("hello")).toBeInTheDocument();
-})
+// test('click event testing 2', () => {
+//     console.log("testing 2");
+//     render(<App />);
+//     const checkBtn = screen.getByRole('button');
+//     fireEvent.click(checkBtn);
+//     expect(screen.getByText("hello")).toBeInTheDocument();
+// })
 
 
 
@@ -136,3 +139,16 @@ test('click event testing 2', () => {
 // afterEach(()=>{
 //     console.log('_______ afterEach _________')
 // })
+
+
+// test("sanpshot for app component", ()=>{
+//     const conatiner = render(<App />);
+//     expect(conatiner).toMatchSnapshot();
+// })
+
+test("class component method testing", () => {
+    const componentData = renderer.create(<Users />).getInstance();
+    let a = "test";
+    let b = "extratext";
+    expect(componentData.getUserList(a)).toMatch(a+b);
+})
