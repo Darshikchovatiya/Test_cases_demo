@@ -7,11 +7,19 @@ import Home from './component/Home/Home'
 import Edit_stu from './component/Edit_stu/Edit_stu'
 import View from './component/View/View'
 import Users from './Users'
+import handleOtherMethod from './helper'
 
 function App() {
 
     const [data, setData] = useState('');
     const [data1, setData1] = useState('');
+    const [data2, setData2] = useState('');
+
+    const handleData = () => {
+        setData2("Hello");
+    }
+
+    
 
     return (
         <>
@@ -30,8 +38,19 @@ function App() {
 
         {/* <h1>Jest testing</h1> */}
 
-        <h1>Class Component method testing</h1>
-        <Users />
+        {/* <h1>Class Component method testing</h1>
+        <Users /> */}
+
+        {/* <h1>Functional Component method testing</h1>
+        <button data-testid="btn1" onClick={handleData}>Update</button>
+        <button onClick={handleOtherMethod}>Print</button>
+
+        <h2>{data2}</h2> */}
+
+
+        <h1>getByRole Query</h1>
+        <input type="text" defaultValue="hello" disabled />
+        <button>Click me</button>
 
             {/* <Header />
             <Routes>

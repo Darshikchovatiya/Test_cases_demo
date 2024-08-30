@@ -2,6 +2,7 @@ import App from "./App";
 import { fireEvent, render, screen } from "@testing-library/react";
 import renderer from 'react-test-renderer';
 import Users from "./Users";
+import handleOtherMethod from "./helper";
 // import cleandb from "./service";
 
 
@@ -146,9 +147,32 @@ import Users from "./Users";
 //     expect(conatiner).toMatchSnapshot();
 // })
 
-test("class component method testing", () => {
-    const componentData = renderer.create(<Users />).getInstance();
-    let a = "test";
-    let b = "extratext";
-    expect(componentData.getUserList(a)).toMatch(a+b);
+// test("class component method testing", () => {
+//     const componentData = renderer.create(<Users />).getInstance();
+//     let a = "test";
+//     let b = "extratext";
+//     expect(componentData.getUserList(a)).toMatch(a+b);
+// })
+
+// test("method testing case 1", () => {
+//     render(<App />);
+//     const btn = screen.getByTestId('btn1');
+//     fireEvent.click(btn);
+//     expect(screen.getByText("Hello")).toBeInTheDocument();
+// })
+
+// test("method testing case 2", () => {
+//     expect(handleOtherMethod()).toMatch("Hi");
+// })
+
+
+test("get by role", () => {
+    render(<App />);
+    const inputFiled = screen.getByRole('textbox');
+    const btn = screen.getByRole('button');
+
+    expect(inputFiled).toBeInTheDocument();
+    expect(inputFiled).toHaveValue("hello");
+    expect(inputFiled).toBeDisabled();
+    expect(btn).toBeInTheDocument();
 })
