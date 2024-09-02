@@ -166,13 +166,82 @@ import handleOtherMethod from "./helper";
 // })
 
 
-test("get by role", () => {
-    render(<App />);
-    const inputFiled = screen.getByRole('textbox');
-    const btn = screen.getByRole('button');
+// test("get by role", () => {
+//     render(<App />);
+//     const inputFiled = screen.getByRole('textbox');
+//     const btn = screen.getByRole('button');
 
-    expect(inputFiled).toBeInTheDocument();
-    expect(inputFiled).toHaveValue("hello");
-    expect(inputFiled).toBeDisabled();
-    expect(btn).toBeInTheDocument();
+//     expect(inputFiled).toBeInTheDocument();
+//     expect(inputFiled).toHaveValue("hello");
+//     expect(inputFiled).toBeDisabled();
+//     expect(btn).toBeInTheDocument();
+// })
+
+test("getByRole Testing", () => {
+    render(<App />);
+    const btn1 = screen.getByRole('button', { name: 'Click 1' });
+    const btn2 = screen.getByRole('button', { name: 'Click 2' });
+    const input1 = screen.getByRole('textbox', { name: 'User name' });
+    const input2 = screen.getByRole('textbox', { name: 'User age' });
+    const dv1 = screen.getByRole('dummy');
+    expect(dv1).toBeInTheDocument();
+
+    expect(btn1).toBeInTheDocument();
+    expect(btn2).toBeInTheDocument();
+    expect(input1).toBeInTheDocument();
+    expect(input2).toBeInTheDocument();
+})
+
+
+test('getAllByRole', () => {
+    render(<App />);
+    const btns = screen.getAllByRole('button');
+    const options = screen.getAllByRole('option');
+
+    for (let i = 0; i < btns.length; i++) {
+        expect(btns[i]).toBeInTheDocument();
+    }
+
+    for (let i = 0; i < options.length; i++) {
+        expect(options[i]).toBeInTheDocument();
+    }
+})
+
+
+test('getByLabelText test 1', () => {
+    render(<App />);
+    const input = screen.getByLabelText('UserName');
+
+    expect(input).toBeInTheDocument();
+    expect(input).toHaveValue("darshik");
+})
+
+test('getByLabelText test 2', () => {
+    render(<App />);
+    const checkbox = screen.getByLabelText('Skills');
+
+    expect(checkbox).toBeInTheDocument();
+    expect(checkbox).toBeChecked();
+})
+
+
+test('getAllByLabelText input test case', () => {
+    render(<App />);
+    const inputs = screen.getAllByLabelText('FirstName');
+
+    for(let i = 0; i < inputs.length; i++){
+        expect(inputs[i]).toBeInTheDocument();
+        expect(inputs[i]).toHaveValue("dev");
+    }
+})
+
+
+test('getAllByLabelText checkbox test case', () => {
+    render(<App />);
+    const checkboxs = screen.getAllByLabelText('Course');
+
+    for(let i = 0; i < checkboxs.length; i++){
+        expect(checkboxs[i]).toBeInTheDocument();
+        expect(checkboxs[i]).toBeChecked();
+    }
 })
