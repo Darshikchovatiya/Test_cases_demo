@@ -1,59 +1,54 @@
-import React, { useState } from 'react'
-import Add_stu from './component/Add_stu/Add_stu'
-import View_stu from './component/View_stu/View_stu'
-import Header from './component/Header/Header'
-import { Route, Routes } from 'react-router'
-import Home from './component/Home/Home'
-import Edit_stu from './component/Edit_stu/Edit_stu'
-import View from './component/View/View'
-import Users from './Users'
-import handleOtherMethod from './helper'
+import React, { useState } from "react";
+import Add_stu from "./component/Add_stu/Add_stu";
+import View_stu from "./component/View_stu/View_stu";
+import Header from "./component/Header/Header";
+import { Route, Routes } from "react-router";
+import Home from "./component/Home/Home";
+import Edit_stu from "./component/Edit_stu/Edit_stu";
+import View from "./component/View/View";
+import Users from "./Users";
+import handleOtherMethod from "./helper";
 
 function App() {
+  const [data, setData] = useState("");
+  const [data1, setData1] = useState("");
+  const [data2, setData2] = useState("");
 
-    const [data, setData] = useState('');
-    const [data1, setData1] = useState('');
-    const [data2, setData2] = useState('');
+  const handleData = () => {
+    setData2("Hello");
+  };
 
-    const handleData = () => {
-        setData2("Hello");
-    }
-
-    
-
-    return (
-        <>
-        {/* <h1>Vite React</h1>
+  return (
+    <>
+      {/* <h1>Vite React</h1>
         <p>Hello coder First React TEST Case xyz</p>
         <p>Freedom is not given, it is taken</p>
         <img src="https://images.pexels.com/photos/6296908/pexels-photo-6296908.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" alt="" title='sky and mountain' />
         <input type="text" placeholder='Enter name' name='name' id='nameId' value='darshik' /> */}
 
-        {/* <h1>Test on change event</h1>
+      {/* <h1>Test on change event</h1>
         <input type="text" value={data} onChange={(e) => {setData(e.target.value + "test")}} /> */}
 
-        {/* <h1>Test Click event with button </h1>
+      {/* <h1>Test Click event with button </h1>
         <button onClick={()=> {setData1('hello')}}>Updated data</button>
         <h1>{data1}</h1> */}
 
-        {/* <h1>Jest testing</h1> */}
+      {/* <h1>Jest testing</h1> */}
 
-        {/* <h1>Class Component method testing</h1>
+      {/* <h1>Class Component method testing</h1>
         <Users /> */}
 
-        {/* <h1>Functional Component method testing</h1>
+      {/* <h1>Functional Component method testing</h1>
         <button data-testid="btn1" onClick={handleData}>Update</button>
         <button onClick={handleOtherMethod}>Print</button>
 
         <h2>{data2}</h2> */}
 
-
-        {/* <h1>getByRole Query</h1>
+      {/* <h1>getByRole Query</h1>
         <input type="text" defaultValue="hello" disabled />
         <button>Click me</button> */}
 
-
-        <h1>Multiple elements with Role</h1>
+      {/* <h1>Multiple elements with Role</h1>
         <h1>Custom Role</h1>
         <button>Click 1</button>
         <button>Click 2</button>
@@ -111,9 +106,40 @@ function App() {
             <label htmlFor="course3">Course</label>
             <input type="checkbox" id="course3" defaultChecked={true} />
 
-        </div>
+        </div> */}
 
-            {/* <Header />
+      <div className="App">
+        <h1>RTL Query : getByPlaceholderText</h1>
+        <input type="text" placeholder="enter username" defaultValue="Dc" />
+
+        <h1>RTL Query : getAllByPlaceholderText</h1>
+        <input type="text" placeholder="enter name" defaultValue="cd" />
+        <input type="text" placeholder="enter name" defaultValue="cd" />
+        <input type="text" placeholder="enter name" defaultValue="cd" />
+      </div>
+
+      <div className="App">
+        <h1>RTL Query : getByText and getAllByText</h1>
+        <button>Login</button>
+        <p className="paraStyle" id="p1">P tag testing</p>
+        <h1>Heading tag</h1>
+
+        <h1>multiple h1 testing</h1>
+        <h1>multiple h1 testing</h1>
+      </div>
+
+      <div className="App">
+        <h1>RTL Query : getByTestId and getAllByTestId</h1>
+        <div data-testid="divtest1">Testing with test id</div>
+        <h2 data-testid="h2test">h2 tag testing</h2>
+
+        <div data-testid="div1test">Testing div1 with test id</div>
+        <div data-testid="div1test">Testing div2 with test id</div>
+
+      </div>
+
+
+      {/* <Header />
             <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path='/add_student' element={<Add_stu />} />
@@ -121,8 +147,8 @@ function App() {
                 <Route path='/edit_student' element={<Edit_stu />} />
                 <Route path='/view' element={<View />} />
             </Routes> */}
-        </>
-    )
+    </>
+  );
 }
 
-export default App
+export default App;
