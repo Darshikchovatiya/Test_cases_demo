@@ -108,7 +108,7 @@ function App() {
 
         </div> */}
 
-      <div className="App">
+      {/* <div className="App">
         <h1>RTL Query : getByPlaceholderText</h1>
         <input type="text" placeholder="enter username" defaultValue="Dc" />
 
@@ -136,8 +136,49 @@ function App() {
         <div data-testid="div1test">Testing div1 with test id</div>
         <div data-testid="div1test">Testing div2 with test id</div>
 
+      </div> */}
+
+
+      <div className="App">
+        <h1>Overriding data-testid</h1>
+        <div id="testdiv">Dummy text</div>
       </div>
 
+      <div className="App">
+        <h1>getByDisplayValue and getAllByDisplayValue</h1>
+        <input type="text" defaultValue='raj' />
+        <br />
+        <br />
+        <textarea defaultValue="hi hello"></textarea>
+        <br />
+        <br />
+        <input type="radio" defaultValue='male' />
+        <br />
+        <br />
+        <input type="text" defaultValue='dev' />
+        <input type="text" defaultValue='dev' />
+      </div>
+
+
+      <div className="App">
+        <h1>getByTitle and getAllByTitle</h1>
+        <button title="click me">Click me</button>
+        <br />
+        <br />
+        <span title="Hot beverage" style={{fontSize: '100px'}}>&#9749;</span>
+        <br />
+        <span title="Watch" style={{fontSize: '100px'}}>&#8986;</span>
+        <span title="Watch" style={{fontSize: '100px'}}>&#8986;</span>
+      </div>
+
+      <div className="App">
+        <h1>getByAltText and getAllByAltText</h1>
+        <img src="https://images.pexels.com/photos/13349864/pexels-photo-13349864.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="ganesh ji"/>
+        <br />
+        <br />
+        <img src="https://images.pexels.com/photos/3225517/pexels-photo-3225517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="nature" />
+        <img src="https://images.pexels.com/photos/3225517/pexels-photo-3225517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="nature" />
+      </div>
 
       {/* <Header />
             <Routes>

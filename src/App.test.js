@@ -1,5 +1,5 @@
 import App from "./App";
-import { fireEvent, render, screen } from "@testing-library/react";
+import { configure, fireEvent, render, screen } from "@testing-library/react";
 import renderer from 'react-test-renderer';
 import Users from "./Users";
 import handleOtherMethod from "./helper";
@@ -249,69 +249,142 @@ import handleOtherMethod from "./helper";
 
 
 
-test('getByPlaceholderText : test case for single input filed', () => {
+// test('getByPlaceholderText : test case for single input filed', () => {
+//     render(<App />);
+//     const input = screen.getByPlaceholderText("enter username");
+//     expect(input).toBeInTheDocument();
+//     expect(input).toHaveValue("Dc");
+// })
+
+// test('getAllByPlaceholderText : test case for multiple input filed', () => {
+//     render(<App />);
+//     const inputs = screen.getAllByPlaceholderText("enter name");
+
+//     for (let i = 0; i < inputs.length; i++) {
+//         expect(inputs[i]).toBeInTheDocument();
+//         expect(inputs[i]).toHaveValue("cd");
+//     }
+// })
+
+// test('getByText : single button testing', () => {
+//     render(<App />);
+//     const btn = screen.getByText('Login');
+//     expect(btn).toBeInTheDocument();
+// })
+
+// test('getByText : single p tag testing', () => {
+//     render(<App />);
+//     const pTag = screen.getByText('P tag testing');
+//     expect(pTag).toBeInTheDocument();
+//     expect(pTag).toHaveClass('paraStyle');
+//     expect(pTag).toHaveAttribute('id');
+// })
+
+// test('getByText : single h1 tag testing', () => {
+//     render(<App />);
+//     const h1Tag = screen.getByText('Heading tag');
+//     expect(h1Tag).toBeInTheDocument();
+// })
+
+// test('getAllByText : multiple h1 tag testing', () => {
+//     render(<App />);
+//     const h1tags = screen.getAllByText('multiple h1 testing');
+
+//     for (let i = 0; i < h1tags.length; i++) {
+//         expect(h1tags[i]).toBeInTheDocument();
+//     }
+// })
+
+// test('getByTestId : Testing with test id', () => {
+//     render(<App />);
+//     const divId = screen.getByTestId('divtest1');
+//     expect(divId).toBeInTheDocument();
+// })
+
+// test('getByTestId : Testing h2 with test id', () => {
+//     render(<App />);
+//     const h2Id = screen.getByTestId('h2test');
+//     expect(h2Id).toBeInTheDocument();
+// })
+
+// test('getAllByTestId : Testing div with test id', () => {
+//     render(<App />);
+//     const divIds = screen.getAllByTestId('div1test');
+
+//     for (let i = 0; i < divIds.length; i++) {
+//         expect(divIds[i]).toBeInTheDocument();
+//     }
+// })
+
+
+
+configure({ testIdAttribute: 'id' })
+
+test('test div with data test id', () => {
     render(<App />);
-    const input = screen.getByPlaceholderText("enter username");
-    expect(input).toBeInTheDocument();
-    expect(input).toHaveValue("Dc");
+    const divElement = screen.getByTestId("testdiv");
+    expect(divElement).toBeInTheDocument();
 })
 
-test('getAllByPlaceholderText : test case for multiple input filed', () => {
+test('testing with display value', () => {
     render(<App />);
-    const inputs = screen.getAllByPlaceholderText("enter name");
+    const inputVal = screen.getByDisplayValue('raj');
+    expect(inputVal).toBeInTheDocument();
+})
 
-    for (let i = 0; i < inputs.length; i++) {
-        expect(inputs[i]).toBeInTheDocument();
-        expect(inputs[i]).toHaveValue("cd");
+test('textarea testing with display value', () => {
+    render(<App />);
+    const textarea = screen.getByDisplayValue('hi hello');
+    expect(textarea).toBeInTheDocument();
+})
+
+test('radio testing with display value', () => {
+    render(<App />);
+    const radio = screen.getByDisplayValue('male');
+    expect(radio).toBeInTheDocument();
+})
+
+test('multiple element testing with display value', () => {
+    render(<App />);
+    const inputsVal = screen.getAllByDisplayValue('dev');
+
+    for (let i = 0; i < inputsVal.length; i++) {
+        expect(inputsVal[i]).toBeInTheDocument();
     }
 })
 
-test('getByText : single button testing', () => {
+
+test('button testing with title attribute', () => {
     render(<App />);
-    const btn = screen.getByText('Login');
-    expect(btn).toBeInTheDocument();
+    const btnTitle = screen.getByTitle('click me');
+    expect(btnTitle).toBeInTheDocument();
 })
 
-test('getByText : single p tag testing', () => {
+test('span testing with title attribute', () => {
     render(<App />);
-    const pTag = screen.getByText('P tag testing');
-    expect(pTag).toBeInTheDocument();
-    expect(pTag).toHaveClass('paraStyle');
-    expect(pTag).toHaveAttribute('id');
+    const spanTitle = screen.getByTitle('Hot beverage');
+    expect(spanTitle).toBeInTheDocument();
 })
 
-test('getByText : single h1 tag testing', () => {
+test('multiple span and icon testing with title attribute', () => {
     render(<App />);
-    const h1Tag = screen.getByText('Heading tag');
-    expect(h1Tag).toBeInTheDocument();
-})
+    const spansTitle = screen.getAllByTitle('Watch');
 
-test('getAllByText : multiple h1 tag testing', () => {
-    render(<App />);
-    const h1tags = screen.getAllByText('multiple h1 testing');
-
-    for (let i = 0; i < h1tags.length; i++) {
-        expect(h1tags[i]).toBeInTheDocument();
+    for (let i = 0; i < spansTitle.length; i++) {
+        expect(spansTitle[i]).toBeInTheDocument();
     }
 })
 
-test('getByTestId : Testing with test id', () => {
+test('testing image element with alt text', () => {
     render(<App />);
-    const divId = screen.getByTestId('divtest1');
-    expect(divId).toBeInTheDocument();
+    const img = screen.getByAltText('ganesh ji');
+    expect(img).toBeInTheDocument();
 })
 
-test('getByTestId : Testing h2 with test id', () => {
+test('testing multiple image element with alt text', () => {
     render(<App />);
-    const h2Id = screen.getByTestId('h2test');
-    expect(h2Id).toBeInTheDocument();
-})
-
-test('getAllByTestId : Testing div with test id', () => {
-    render(<App />);
-    const divIds = screen.getAllByTestId('div1test');
-
-    for (let i = 0; i < divIds.length; i++) {
-        expect(divIds[i]).toBeInTheDocument();
+    const imgs = screen.getAllByAltText('nature');
+    for (let i = 0; i < imgs.length; i++) {
+        expect(imgs[i]).toBeInTheDocument();
     }
 })
