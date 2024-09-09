@@ -318,73 +318,141 @@ import handleOtherMethod from "./helper";
 
 
 
-configure({ testIdAttribute: 'id' })
+// configure({ testIdAttribute: 'id' })
 
-test('test div with data test id', () => {
+// test('test div with data test id', () => {
+//     render(<App />);
+//     const divElement = screen.getByTestId("testdiv");
+//     expect(divElement).toBeInTheDocument();
+// })
+
+// test('testing with display value', () => {
+//     render(<App />);
+//     const inputVal = screen.getByDisplayValue('raj');
+//     expect(inputVal).toBeInTheDocument();
+// })
+
+// test('textarea testing with display value', () => {
+//     render(<App />);
+//     const textarea = screen.getByDisplayValue('hi hello');
+//     expect(textarea).toBeInTheDocument();
+// })
+
+// test('radio testing with display value', () => {
+//     render(<App />);
+//     const radio = screen.getByDisplayValue('male');
+//     expect(radio).toBeInTheDocument();
+// })
+
+// test('multiple element testing with display value', () => {
+//     render(<App />);
+//     const inputsVal = screen.getAllByDisplayValue('dev');
+
+//     for (let i = 0; i < inputsVal.length; i++) {
+//         expect(inputsVal[i]).toBeInTheDocument();
+//     }
+// })
+
+
+// test('button testing with title attribute', () => {
+//     render(<App />);
+//     const btnTitle = screen.getByTitle('click me');
+//     expect(btnTitle).toBeInTheDocument();
+// })
+
+// test('span testing with title attribute', () => {
+//     render(<App />);
+//     const spanTitle = screen.getByTitle('Hot beverage');
+//     expect(spanTitle).toBeInTheDocument();
+// })
+
+// test('multiple span and icon testing with title attribute', () => {
+//     render(<App />);
+//     const spansTitle = screen.getAllByTitle('Watch');
+
+//     for (let i = 0; i < spansTitle.length; i++) {
+//         expect(spansTitle[i]).toBeInTheDocument();
+//     }
+// })
+
+// test('testing image element with alt text', () => {
+//     render(<App />);
+//     const img = screen.getByAltText('ganesh ji');
+//     expect(img).toBeInTheDocument();
+// })
+
+// test('testing multiple image element with alt text', () => {
+//     render(<App />);
+//     const imgs = screen.getAllByAltText('nature');
+//     for (let i = 0; i < imgs.length; i++) {
+//         expect(imgs[i]).toBeInTheDocument();
+//     }
+// })
+
+
+
+// test('test input', () => {
+//     render(<App />);
+//     const input = screen.getByRole('textbox');
+//     expect(input).toBeInTheDocument();
+//     expect(input).toHaveValue();
+//     expect(input).toHaveValue('shiv');
+//     expect(input).toBeEnabled();
+//     // expect(input).toBeDisabled();
+//     expect(input).toHaveAttribute('id');
+//     expect(input).toHaveAttribute('data-test');
+//     expect(input).toHaveClass('test-style');
+//     expect(input).toHaveClass('dummy');
+// })
+
+// test('test negative cases', () => {
+//     render(<App />);
+//     const btn = screen.getByRole("button");
+//     expect(btn).toBeInTheDocument();
+//     expect(btn).not.toHaveClass("btn1");
+//     expect(btn).not.toHaveAttribute("id");
+//     expect(btn).not.toBeEnabled();
+// })
+
+// test('text match with string',()=>{
+//     render(<App />);
+//     // const div = screen.getByText("Hello World",{exact:false});
+//     // const div = screen.getByText("hello world",{exact:false});
+//     const div = screen.getByText("hello",{exact:false});
+//     expect(div).toBeInTheDocument();
+// })
+
+// test('text match with Regex',()=>{
+//     render(<App />);
+//     // const div = screen.getByText(/Hello/);
+//     // const div = screen.getByText(/lo Wo/);
+//     // const div = screen.getByText(/hello/i);
+//     const div = screen.getByText(/Hello w?orld/i);
+    
+//     expect(div).toBeInTheDocument();
+// })
+
+// test('text match with function',()=>{
+//     render(<App />);
+//     // const div1 = screen.getByText((content,element)=>content.startsWith('Good'));
+//     // const div1 = screen.getByText((content,element)=>content.endsWith('Morning'));
+//     // const div1 = screen.getByText((content,element)=>content.endsWith('ng'));
+//     // const div1 = screen.getByText((content,element)=>content.includes('ood'));
+
+//     // const div1 = screen.getByText((content,element)=>{
+//     //     return content.includes('Mor');
+//     // });
+//     const div1 = screen.getByText((content,element)=>{
+//         return content.length==12
+//     });
+
+
+//     expect(div1).toBeInTheDocument();
+// })
+
+test('QueryBy test case', () => {
     render(<App />);
-    const divElement = screen.getByTestId("testdiv");
-    expect(divElement).toBeInTheDocument();
-})
-
-test('testing with display value', () => {
-    render(<App />);
-    const inputVal = screen.getByDisplayValue('raj');
-    expect(inputVal).toBeInTheDocument();
-})
-
-test('textarea testing with display value', () => {
-    render(<App />);
-    const textarea = screen.getByDisplayValue('hi hello');
-    expect(textarea).toBeInTheDocument();
-})
-
-test('radio testing with display value', () => {
-    render(<App />);
-    const radio = screen.getByDisplayValue('male');
-    expect(radio).toBeInTheDocument();
-})
-
-test('multiple element testing with display value', () => {
-    render(<App />);
-    const inputsVal = screen.getAllByDisplayValue('dev');
-
-    for (let i = 0; i < inputsVal.length; i++) {
-        expect(inputsVal[i]).toBeInTheDocument();
-    }
-})
-
-
-test('button testing with title attribute', () => {
-    render(<App />);
-    const btnTitle = screen.getByTitle('click me');
-    expect(btnTitle).toBeInTheDocument();
-})
-
-test('span testing with title attribute', () => {
-    render(<App />);
-    const spanTitle = screen.getByTitle('Hot beverage');
-    expect(spanTitle).toBeInTheDocument();
-})
-
-test('multiple span and icon testing with title attribute', () => {
-    render(<App />);
-    const spansTitle = screen.getAllByTitle('Watch');
-
-    for (let i = 0; i < spansTitle.length; i++) {
-        expect(spansTitle[i]).toBeInTheDocument();
-    }
-})
-
-test('testing image element with alt text', () => {
-    render(<App />);
-    const img = screen.getByAltText('ganesh ji');
-    expect(img).toBeInTheDocument();
-})
-
-test('testing multiple image element with alt text', () => {
-    render(<App />);
-    const imgs = screen.getAllByAltText('nature');
-    for (let i = 0; i < imgs.length; i++) {
-        expect(imgs[i]).toBeInTheDocument();
-    }
+    // const dv = screen.getByText('Login');
+    const dv = screen.queryByText('Login');
+    expect(dv).not.toBeInTheDocument();
 })

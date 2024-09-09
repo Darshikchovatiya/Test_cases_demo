@@ -18,6 +18,8 @@ function App() {
     setData2("Hello");
   };
 
+  let login = true;
+
   return (
     <>
       {/* <h1>Vite React</h1>
@@ -139,7 +141,7 @@ function App() {
       </div> */}
 
 
-      <div className="App">
+      {/* <div className="App">
         <h1>Overriding data-testid</h1>
         <div id="testdiv">Dummy text</div>
       </div>
@@ -178,7 +180,39 @@ function App() {
         <br />
         <img src="https://images.pexels.com/photos/3225517/pexels-photo-3225517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="nature" />
         <img src="https://images.pexels.com/photos/3225517/pexels-photo-3225517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="nature" />
-      </div>
+      </div> */}
+
+
+        <div className="App">
+          <h1>Assertion Methods</h1>
+          <input type="text" defaultValue='shiv' name="userName" className="test-style dummy" id="user-name" data-test="test" />
+          <button className="btn2" disabled name="btn-id">Click Me</button>
+        </div>
+        <br />
+        <br />
+
+
+        <div className="App">
+          <h1>TextMatch with String and Regex</h1>
+          <div>Hello World</div>
+        </div>
+        <br />
+
+
+        <div className="App">
+          <h1>TextMatch with Function</h1>
+          <div>Good Morning</div>
+          {/* <div>hi Morning</div> */}
+        </div>
+        <br />
+
+        <div className="App">
+          <h1>QueryBy and QueryAllBy</h1>
+          {
+            login ? <button>Logout</button> : <button>Login</button>
+          }
+        </div>
+
 
       {/* <Header />
             <Routes>
