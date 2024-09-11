@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Add_stu from "./component/Add_stu/Add_stu";
 import View_stu from "./component/View_stu/View_stu";
 import Header from "./component/Header/Header";
@@ -8,15 +8,27 @@ import Edit_stu from "./component/Edit_stu/Edit_stu";
 import View from "./component/View/View";
 import Users from "./Users";
 import handleOtherMethod from "./helper";
+import User from "./User";
 
-function App() {
+function App(props) {
   const [data, setData] = useState("");
   const [data1, setData1] = useState("");
   const [data2, setData2] = useState("");
+  const [data3, setData3] = useState(false);
+  const [data4, setData4] = useState("");
+  const [name, setName] = useState("");
+  const [name2, setName2] = useState("");
+  const [count, setCount] = useState(0);
 
   const handleData = () => {
     setData2("Hello");
   };
+
+  useEffect(() => {
+    setTimeout(() => {
+      setData3(true)
+    }, 2000);
+  })
 
   let login = true;
 
@@ -183,7 +195,7 @@ function App() {
       </div> */}
 
 
-        <div className="App">
+      {/* <div className="App">
           <h1>Assertion Methods</h1>
           <input type="text" defaultValue='shiv' name="userName" className="test-style dummy" id="user-name" data-test="test" />
           <button className="btn2" disabled name="btn-id">Click Me</button>
@@ -202,7 +214,7 @@ function App() {
         <div className="App">
           <h1>TextMatch with Function</h1>
           <div>Good Morning</div>
-          {/* <div>hi Morning</div> */}
+          <div>hi Morning</div>
         </div>
         <br />
 
@@ -211,7 +223,72 @@ function App() {
           {
             login ? <button>Logout</button> : <button>Login</button>
           }
-        </div>
+        </div> */}
+
+
+      {/* <div className="App">
+            <h1>findBy and findAllBy</h1>
+            {
+              data3?<h1>data found</h1>:<h1>no data found</h1>
+            }
+          </div>
+          <br />
+          <br />
+
+          <div className="App">
+            <h1 id="testId">Hello World</h1>
+          </div>
+          <br />
+
+          <div className="App">
+            <div>
+              Code
+              <p>hi</p>
+              <p>hello</p>
+              <p>hey</p>
+            </div>
+          </div> */}
+
+
+      {/* <div className="App">
+        <h1>{data4}</h1>
+        <button onClick={() => setData4('hi')}>Click me</button>
+      </div>
+      <br /> */}
+
+      {/* <div className="App">
+        <h1>onChange Event Testing</h1>
+        <h2>{name}</h2>
+        <input type="text" onChange={e => setName(e.target.value)} placeholder="Enter name" />
+      </div>
+      <br /> */}
+
+      <div className="App">
+        <h1>act function Testing</h1>
+        <h2>{name2}</h2>
+        <input type="text" onChange={e => setName2(e.target.value)} placeholder="Enter name" />
+      </div>
+      <br />
+
+      <div className="App">
+        <h1>Test component Props</h1>
+        <User name="mohit" />
+      </div>
+      <br />
+
+      <div className="App">
+        <h1>Functional Props Testing and Function Mocking</h1>
+        <button onClick={props.testFunction}>Click</button>
+      </div>
+      <br />
+
+      <div className="App">
+        <h1>Debugging in React testing library</h1>
+        <button onClick={()=>setCount(count => count + 1)}>Click to increase: {count}</button>
+        <h2>Heading 2</h2>
+        <h5>Heading 5</h5>
+        <input />
+      </div>
 
 
       {/* <Header />

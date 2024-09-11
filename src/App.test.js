@@ -1,8 +1,9 @@
 import App from "./App";
-import { configure, fireEvent, render, screen } from "@testing-library/react";
+import { act, configure, fireEvent, prettyDOM, render, screen, within } from "@testing-library/react";
 import renderer from 'react-test-renderer';
 import Users from "./Users";
 import handleOtherMethod from "./helper";
+import userEvent from "@testing-library/user-event";
 // import cleandb from "./service";
 
 
@@ -450,9 +451,81 @@ import handleOtherMethod from "./helper";
 //     expect(div1).toBeInTheDocument();
 // })
 
-test('QueryBy test case', () => {
-    render(<App />);
-    // const dv = screen.getByText('Login');
-    const dv = screen.queryByText('Login');
-    expect(dv).not.toBeInTheDocument();
+// test('QueryBy test case', () => {
+//     render(<App />);
+//     // const dv = screen.getByText('Login');
+//     const dv = screen.queryByText('Login');
+//     expect(dv).not.toBeInTheDocument();
+// })
+
+
+
+// test('test element with find by',async () => {
+//     render(<App />);
+//     const el = await screen.findByText('data found',{},{timeout:5000});
+//     expect(el).toBeInTheDocument();
+// })
+
+// test('test case with custom query', () => {
+//     render(<App />);
+//     const cq = document.querySelector('#testId');
+//     expect(cq).toBeInTheDocument();
+//     expect(cq).toHaveTextContent('Hello World');
+//     expect(cq).toHaveAttribute('id');
+// })
+
+// test('Test with within function',()=>{
+//     render(<App />);
+//     let pe = screen.getByText('Code');
+//     let ce = within(pe).getByText('hi');
+//     let ce2 = within(pe).getByText('hello');
+//     expect(pe).toBeInTheDocument();
+//     expect(ce).toBeInTheDocument();
+//     expect(ce2).toBeInTheDocument();
+// })
+
+
+
+// test('Click Event with User Event Library', async () => {
+//     userEvent.setup();
+//     render(<App />);
+//     const btn = screen.getByText('Click me');
+//      await userEvent.click(btn);
+//     expect(screen.getByText('hi')).toBeInTheDocument();
+// })
+
+// test('onChange Event Testing',async ()=>{
+//     userEvent.setup();
+//     render(<App />);
+//     const input = screen.getByRole('textbox');
+//     await userEvent.type(input,"hey");
+//     expect(screen.getByText('hey')).toBeInTheDocument();
+// })
+
+// test('Act function',async () => {
+//     userEvent.setup();
+//     render(<App />);
+//     const input = screen.getByRole('textbox');
+//     await act(async ()=>{
+//         await userEvent.type(input,"good mor");
+//     })
+//     expect(screen.getByText('good mor')).toBeInTheDocument();
+// })
+
+// test('Functional Props Testing',async ()=>{
+//     const testFunction = jest.fn();
+//     userEvent.setup();
+//     render(<App testFunction={testFunction} />);
+//     const btn = screen.getByRole('button');
+//     await userEvent.click(btn);
+//     expect(testFunction).toBeCalled();
+// })
+
+test('testing component', () => {
+    const {container} = render(<App />);
+    // const head2 = screen.getByText('Heading 2');
+    // expect(head2).toBeInTheDocument();
+    // console.log(container);
+    // console.log(prettyDOM(container));
+    
 })
