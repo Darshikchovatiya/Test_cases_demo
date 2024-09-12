@@ -1,5 +1,5 @@
 import App from "./App";
-import { act, configure, fireEvent, prettyDOM, render, screen, within } from "@testing-library/react";
+import { act, configure, fireEvent, logRoles, prettyDOM, render, screen, within } from "@testing-library/react";
 import renderer from 'react-test-renderer';
 import Users from "./Users";
 import handleOtherMethod from "./helper";
@@ -521,11 +521,19 @@ import userEvent from "@testing-library/user-event";
 //     expect(testFunction).toBeCalled();
 // })
 
-test('testing component', () => {
-    const {container} = render(<App />);
-    // const head2 = screen.getByText('Heading 2');
-    // expect(head2).toBeInTheDocument();
-    // console.log(container);
-    // console.log(prettyDOM(container));
-    
+// test('testing component', () => {
+//     const {container, debug} = render(<App />);
+//     // const head2 = screen.getByText('Heading 2');
+//     // expect(head2).toBeInTheDocument();
+//     // console.log(container);
+//     // console.log(prettyDOM(container));
+//     // debug();
+//     logRoles(container);
+// })
+
+
+test('test handing', () => {
+    render(<App />);
+    const heading = screen.getByRole('heading')
+    expect(heading).toBeInTheDocument();
 })

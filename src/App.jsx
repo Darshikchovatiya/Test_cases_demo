@@ -19,16 +19,27 @@ function App(props) {
   const [name, setName] = useState("");
   const [name2, setName2] = useState("");
   const [count, setCount] = useState(0);
+  const [apiRes, setApiRes] = useState([]);
 
   const handleData = () => {
     setData2("Hello");
   };
 
   useEffect(() => {
+    getData();
+  }, [])
+
+  useEffect(() => {
     setTimeout(() => {
       setData3(true)
     }, 2000);
   })
+
+  const getData = async () => {
+    let result = await fetch("https://jsonplaceholder.typicode.com/users");
+    result = await result.json();
+    setApiRes(result);
+  }
 
   let login = true;
 
@@ -263,7 +274,7 @@ function App(props) {
       </div>
       <br /> */}
 
-      <div className="App">
+      {/* <div className="App">
         <h1>act function Testing</h1>
         <h2>{name2}</h2>
         <input type="text" onChange={e => setName2(e.target.value)} placeholder="Enter name" />
@@ -274,9 +285,9 @@ function App(props) {
         <h1>Test component Props</h1>
         <User name="mohit" />
       </div>
-      <br />
+      <br /> */}
 
-      <div className="App">
+      {/* <div className="App">
         <h1>Functional Props Testing and Function Mocking</h1>
         <button onClick={props.testFunction}>Click</button>
       </div>
@@ -284,10 +295,26 @@ function App(props) {
 
       <div className="App">
         <h1>Debugging in React testing library</h1>
-        <button onClick={()=>setCount(count => count + 1)}>Click to increase: {count}</button>
+        <button onClick={() => setCount(count => count + 1)}>Click to increase: {count}</button>
         <h2>Heading 2</h2>
         <h5>Heading 5</h5>
-        <input />
+        <input placeholder="enter name" />
+      </div>
+      <br />
+      <br /> */}
+
+
+      <div className="App">
+        {/* <h1>What is MSW | Mock Service worker</h1>
+        <h2>Api call</h2> */}
+        <h4>List of Users</h4>
+        <ul>
+          {
+            apiRes.map((ar) => (
+              <li key={ar.id}>{ar.name}</li>
+            ))
+          }
+        </ul>
       </div>
 
 
