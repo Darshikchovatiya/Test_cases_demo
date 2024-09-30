@@ -532,8 +532,14 @@ import userEvent from "@testing-library/user-event";
 // })
 
 
-test('test handing', () => {
-    render(<App />);
-    const heading = screen.getByRole('heading')
-    expect(heading).toBeInTheDocument();
-})
+// test('test handing', () => {
+//     render(<App />);
+//     const heading = screen.getByRole('heading')
+//     expect(heading).toBeInTheDocument();
+// })
+
+// test('test for mock api',async()=>{
+//     render(<App />);
+//     const apit = await screen.findAllByRole('listitem');
+//     expect(apit).toHaveLength(4);
+// })

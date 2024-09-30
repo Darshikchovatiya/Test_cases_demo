@@ -5,9 +5,20 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter } from 'react-router-dom';
 import './index.css'
 
+
+// async function deferRender() {
+//     const { worker } = await import("./mocks/browser.js");
+//     return worker.start();
+// }
+
+
+
+// deferRender().then(() => {
+
 ReactDOM.createRoot(document.getElementById('root')).render(
     <BrowserRouter>
         <App />
-    </BrowserRouter>  
-  
+    </BrowserRouter>
+
 )
+// })

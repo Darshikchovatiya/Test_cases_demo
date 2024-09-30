@@ -9,39 +9,40 @@ import View from "./component/View/View";
 import Users from "./Users";
 import handleOtherMethod from "./helper";
 import User from "./User";
+import axios from "axios";
 
 function App(props) {
-  const [data, setData] = useState("");
-  const [data1, setData1] = useState("");
-  const [data2, setData2] = useState("");
-  const [data3, setData3] = useState(false);
-  const [data4, setData4] = useState("");
-  const [name, setName] = useState("");
-  const [name2, setName2] = useState("");
-  const [count, setCount] = useState(0);
-  const [apiRes, setApiRes] = useState([]);
 
-  const handleData = () => {
-    setData2("Hello");
-  };
+  // const [data, setData] = useState("");
+  // const [data1, setData1] = useState("");
+  // const [data2, setData2] = useState("");
+  // const [data3, setData3] = useState(false);
+  // const [data4, setData4] = useState("");
+  // const [name, setName] = useState("");
+  // const [name2, setName2] = useState("");
+  // const [count, setCount] = useState(0);
+  // const [apiRes, setApiRes] = useState([]);
 
-  useEffect(() => {
-    getData();
-  }, [])
+  // const handleData = () => {
+  //   setData2("Hello");
+  // };
 
-  useEffect(() => {
-    setTimeout(() => {
-      setData3(true)
-    }, 2000);
-  })
+  // useEffect(() => {
+  //   getData();
+  // }, [])
 
-  const getData = async () => {
-    let result = await fetch("https://jsonplaceholder.typicode.com/users");
-    result = await result.json();
-    setApiRes(result);
-  }
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setData3(true)
+  //   }, 2000);
+  // })
 
-  let login = true;
+  // const getData = async () => {
+  //   let result = await axios.get("https://jsonplaceholder.typicode.com/users");
+  //   setApiRes(result.data);
+  // }
+
+  // let login = true;
 
   return (
     <>
@@ -304,9 +305,9 @@ function App(props) {
       <br /> */}
 
 
-      <div className="App">
-        {/* <h1>What is MSW | Mock Service worker</h1>
-        <h2>Api call</h2> */}
+      {/* <div className="App">
+        <h1>What is MSW | Mock Service worker</h1>
+        <h2>Api call</h2>
         <h4>List of Users</h4>
         <ul>
           {
@@ -315,7 +316,7 @@ function App(props) {
             ))
           }
         </ul>
-      </div>
+      </div> */}
 
 
       {/* <Header />
